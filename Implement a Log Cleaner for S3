@@ -4,7 +4,6 @@ from datetime import datetime, timezone, timedelta
 # Initialize S3 client
 s3 = boto3.client('s3')
 
-# Specify your S3 bucket name here
 S3_BUCKET_NAME = 'abhay-bucket-cleanup'
 
 # Function to calculate the age of each log and delete logs older than 90 days
