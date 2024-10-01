@@ -327,9 +327,16 @@ Reduced Management Overhead: Serverless architecture frees up the need for manag
 
 Cost-effectiveness: With AWS Lambda, you only pay for the compute time you use, making it a cost-effective solution for sporadic or variable workloads.
 
-By using AWS services like Lambda, Boto3, EC2, S3, and EBS, this project has shown how serverless architecture can be applied to real-world scenarios, providing powerful, scalable, and cost-efficient solutions for managing cloud infrastructure.
+## Contact
+For any issues, feel free to reach out:
 
-This experience lays the foundation for building more complex serverless applications and further enhancing cloud management capabilities.
+Name: Abhay Kumar Shukla
+
+Email: abhay06072002@gmail.com
+
+GitHub: https://github.com/AbhayShukla1907
+
+LinkedIn: https://www.linkedin.com/in/abhay-shukla-65818330a/
 
 
 
