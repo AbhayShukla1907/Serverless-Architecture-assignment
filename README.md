@@ -23,45 +23,45 @@
     import boto3
 
     def lambda_handler(event, context):
-    ec2 = boto3.client('ec2')
+        ec2 = boto3.client('ec2')
 
-    # Find instances with tag 'Action' = 'Auto-Stop'
-    stop_instances = ec2.describe_instances(
-        Filters=[
-            {'Name': 'tag:Action', 'Values': ['Auto-Stop']}
-        ]
-    )
+        # Find instances with tag 'Action' = 'Auto-Stop'
+        stop_instances = ec2.describe_instances(
+            Filters=[
+                {'Name': 'tag:Action', 'Values': ['Auto-Stop']}
+            ]
+        )
 
-    # Find instances with tag 'Action' = 'Auto-Start'
-    start_instances = ec2.describe_instances(
-        Filters=[
-            {'Name': 'tag:Action', 'Values': ['Auto-Start']}
-        ]
-    )
+        # Find instances with tag 'Action' = 'Auto-Start'
+        start_instances = ec2.describe_instances(
+             Filters=[
+                 {'Name': 'tag:Action', 'Values': ['Auto-Start']}
+             ]
+        )
 
-    stop_instance_ids = [instance['InstanceId'] 
-                         for reservation in stop_instances['Reservations']
-                         for instance in reservation['Instances']]
+        stop_instance_ids = [instance['InstanceId'] 
+                            for reservation in stop_instances['Reservations']
+                            for instance in reservation['Instances']]
     
-    start_instance_ids = [instance['InstanceId'] 
-                          for reservation in start_instances['Reservations']
-                          for instance in reservation['Instances']]
+        start_instance_ids = [instance['InstanceId'] 
+                             for reservation in start_instances['Reservations']
+                             for instance in reservation['Instances']]
 
-    # Stop 'Auto-Stop' instances
-    if stop_instance_ids:
-        ec2.stop_instances(InstanceIds=stop_instance_ids)
-        print(f'Stopped instances: {stop_instance_ids}')
+        # Stop 'Auto-Stop' instances
+        if stop_instance_ids:
+           ec2.stop_instances(InstanceIds=stop_instance_ids)
+           print(f'Stopped instances: {stop_instance_ids}')
     
-    # Start 'Auto-Start' instances
-    if start_instance_ids:
-        ec2.start_instances(InstanceIds=start_instance_ids)
-        print(f'Started instances: {start_instance_ids}')
+        # Start 'Auto-Start' instances
+        if start_instance_ids:
+           ec2.start_instances(InstanceIds=start_instance_ids)
+           print(f'Started instances: {start_instance_ids}')
     
-    return {
-        'statusCode': 200,
-        'body': 'Lambda executed successfully!'
-    }
-    '''
+         return {
+             'statusCode': 200,
+              'body': 'Lambda executed successfully!'
+                }
+ 
    Click Deploy to save the Lambda function
 #### 5.	Test the Lambda Function
    Manually Invoke the Function
@@ -94,13 +94,13 @@
 ### 3.	Write the Boto3 Code for Log Cleaner 
  
     import boto3
-       from datetime import datetime, timezone
+    from datetime import datetime, timezone
 
      # Initialize S3 client
-      s3 = boto3.client('s3')
+     s3 = boto3.client('s3')
 
      def lambda_handler(event, context)
-    bucket_name = 'abhay-bucket-cleanup'
+     bucket_name = 'abhay-bucket-cleanup'
     
     # Specify the retention period (90 days)
     retention_days = 90
